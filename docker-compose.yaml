@@ -1,0 +1,18 @@
+services:
+  web:
+    build: ./web
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+  api:
+    build: ./api
+    ports:
+      - "3000:3000"
+    secrets:
+      - api_key
+
+secrets:
+  api_key:
+    file: ./secrets/api_key.txt
